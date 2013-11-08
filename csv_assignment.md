@@ -5,7 +5,7 @@ In this assignment we will be creating an application to look up Farmers Markets
 ### Getting Started
 
 1. Pair up!
-2. The individual closest to the center of the room will fork the repo: [repo link](repo_link)
+2. The individual closest to the center of the room will fork the repo: [https://github.com/Ada-Developers-Academy/far_mar_finder](https://github.com/Ada-Developers-Academy/far_mar_finder)
 3. Add the second individual as a collaborator
 4. The second individual will clone the repo
 5. Both individuals cd into the dir created (DIR NAME)
