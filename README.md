@@ -2,7 +2,12 @@
 
 Christina Thonmpson
 Davida Marion
+<<<<<<< HEAD
 Adaaaaa!!!!!!
+=======
+We are the best.
+
+>>>>>>> 502d5025e8fabcb3d2c5efa94cc5359f4287a99b
 # FarMar Finder
 
 In this assignment we will be creating an application to look up Farmers Markets and their related vendors, products, and sales. We will use CSV files as our database.
