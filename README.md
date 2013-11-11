@@ -2,6 +2,7 @@
 
 Christina Thonmpson
 Davida Marion
+We are the best.
 
 # FarMar Finder
 
