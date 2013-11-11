@@ -1,6 +1,7 @@
 ## Authors
 
 Christina Thonmpson
+Davida Marion
 
 # FarMar Finder
 
