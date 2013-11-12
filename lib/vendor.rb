@@ -91,4 +91,10 @@ class Vendor
     return sum
   end
 
+  def amount_dollars
+    all.map do |vendor|
+      revenue
+
+  end
+
 end

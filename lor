@@ -1,0 +1,187 @@
+Run options: include {:focus=>true}
+
+All examples were filtered out; ignoring {:focus=>true}
+...........F.......F...FFF.F.F...F.FFFFF.F.F...FFF.FF.F.F..
+
+Failures:
+
+  1) Market attributes has the id 1
+     Failure/Error: expect(market.id).to eq 1
+       
+       expected: 1
+            got: "1"
+       
+       (compared using ==)
+     # ./spec/lib/market_spec.rb:31:in `block (3 levels) in <top (required)>'
+
+  2) Market instance methods finds the vendors
+     Failure/Error: market.vendors.first.id.should eq 1
+     NoMethodError:
+       undefined method `id' for #<Vendor:0x007f86ac3eae38>
+     # ./spec/lib/market_spec.rb:64:in `block (3 levels) in <top (required)>'
+
+  3) Product class methods responds to 'by_market'
+     Failure/Error: product_class.should respond_to :by_vendor
+       expected Product to respond to :by_vendor
+     # ./spec/lib/product_spec.rb:27:in `block (3 levels) in <top (required)>'
+
+  4) Product class methods find the first product by market 1
+     Failure/Error: product_class.by_vendor(1).first.name.should eq "Dry Beets"
+     NoMethodError:
+       undefined method `by_vendor' for Product:Class
+     # ./spec/lib/product_spec.rb:31:in `block (3 levels) in <top (required)>'
+
+  5) Product attributes has the id 10
+     Failure/Error: product.id.should eq 10
+     NoMethodError:
+       undefined method `id' for #<Product:0x007f86ac295538>
+     # ./spec/lib/product_spec.rb:40:in `block (3 levels) in <top (required)>'
+
+  6) Product attributes has the market_id 3
+     Failure/Error: product.vendor_id.should eq 5
+       
+       expected: 5
+            got: "5"
+       
+       (compared using ==)
+     # ./spec/lib/product_spec.rb:48:in `block (3 levels) in <top (required)>'
+
+  7) Product associations market_id matches the markets id
+     Failure/Error: product.vendor.id.should eq product.vendor_id
+     NoMethodError:
+       undefined method `id' for #<Vendor:0x007f86ac29fc90>
+     # ./spec/lib/product_spec.rb:60:in `block (3 levels) in <top (required)>'
+
+  8) Sale class methods 'all' should return
+     Failure/Error: sale_class.all.count.should eq 12798
+       
+       expected: 12798
+            got: 12797
+       
+       (compared using ==)
+     # ./spec/lib/sale_spec.rb:18:in `block (3 levels) in <top (required)>'
+
+  9) Sale attributes has the id 1
+     Failure/Error: expect(sale.id).to eq 1
+     NoMethodError:
+       undefined method `id' for #<Sale:0x007f86ae3c85e8>
+     # ./spec/lib/sale_spec.rb:31:in `block (3 levels) in <top (required)>'
+
+  10) Sale attributes has the amount in cents 9290
+     Failure/Error: expect(sale.amount).to eq 9290
+     NoMethodError:
+       undefined method `amount' for #<Sale:0x007f86ac408b18>
+     # ./spec/lib/sale_spec.rb:35:in `block (3 levels) in <top (required)>'
+
+  11) Sale attributes has the day 31
+     Failure/Error: expect(sale.purchase_time.day).to eq 31
+     NoMethodError:
+       undefined method `day' for "2011-03-31 02:47:56 -0700":String
+     # ./spec/lib/sale_spec.rb:39:in `block (3 levels) in <top (required)>'
+
+  12) Sale attributes has the vendor_id 1
+     Failure/Error: expect(sale.vendor_id).to eq 1
+       
+       expected: 1
+            got: "1"
+       
+       (compared using ==)
+     # ./spec/lib/sale_spec.rb:43:in `block (3 levels) in <top (required)>'
+
+  13) Sale attributes has the product_id 1
+     Failure/Error: expect(sale.product_id).to eq 1
+       
+       expected: 1
+            got: "1"
+       
+       (compared using ==)
+     # ./spec/lib/sale_spec.rb:47:in `block (3 levels) in <top (required)>'
+
+  14) Sale instance methods has the vendor
+     Failure/Error: sale.vendor.id.should eq sale.vendor_id
+     NoMethodError:
+       undefined method `id' for #<Vendor:0x007f86ae1d8c38>
+     # ./spec/lib/sale_spec.rb:59:in `block (3 levels) in <top (required)>'
+
+  15) Sale instance methods has the product
+     Failure/Error: sale.product.id.should eq sale.product_id
+     NoMethodError:
+       undefined method `id' for #<Product:0x007f86ac645840>
+     # ./spec/lib/sale_spec.rb:65:in `block (3 levels) in <top (required)>'
+
+  16) Vendor class methods responds to 'by_market'
+     Failure/Error: vendor_class.should respond_to :by_market
+       expected Vendor to respond to :by_market
+     # ./spec/lib/vendor_spec.rb:27:in `block (3 levels) in <top (required)>'
+
+  17) Vendor class methods find the first vendor by market 1
+     Failure/Error: vendor_class.by_market(100).first.name.should eq "Schiller-Ledner"
+     NoMethodError:
+       undefined method `by_market' for Vendor:Class
+     # ./spec/lib/vendor_spec.rb:31:in `block (3 levels) in <top (required)>'
+
+  18) Vendor attributes has the id 10
+     Failure/Error: vendor.id.should eq 10
+     NoMethodError:
+       undefined method `id' for #<Vendor:0x007f86ac752350>
+     # ./spec/lib/vendor_spec.rb:40:in `block (3 levels) in <top (required)>'
+
+  19) Vendor attributes has the no of employees 11
+     Failure/Error: vendor.no_of_employees.should eq 11
+     NoMethodError:
+       undefined method `no_of_employees' for #<Vendor:0x007f86ae1b0828>
+     # ./spec/lib/vendor_spec.rb:46:in `block (3 levels) in <top (required)>'
+
+  20) Vendor attributes has the market_id 3
+     Failure/Error: vendor.market_id.should eq 3
+       
+       expected: 3
+            got: "3"
+       
+       (compared using ==)
+     # ./spec/lib/vendor_spec.rb:49:in `block (3 levels) in <top (required)>'
+
+  21) Vendor associations market_id matches the markets id
+     Failure/Error: vendor.market.id.should eq vendor.market_id
+     NoMethodError:
+       undefined method `id' for #<Array:0x007f86ae15aa18>
+     # ./spec/lib/vendor_spec.rb:61:in `block (3 levels) in <top (required)>'
+
+  22) Vendor associations has 7 sales
+     Failure/Error: vendor.sales.count.should eq 7
+     NoMethodError:
+       undefined method `market_id' for #<Sale:0x007f86ac607d88>
+     # ./lib/sale.rb:44:in `block in find_by_market_id'
+     # ./lib/sale.rb:43:in `each'
+     # ./lib/sale.rb:43:in `find_all'
+     # ./lib/sale.rb:43:in `find_by_market_id'
+     # ./lib/vendor.rb:61:in `sales'
+     # ./spec/lib/vendor_spec.rb:69:in `block (3 levels) in <top (required)>'
+
+Finished in 3.15 seconds
+59 examples, 22 failures
+
+Failed examples:
+
+rspec ./spec/lib/market_spec.rb:30 # Market attributes has the id 1
+rspec ./spec/lib/market_spec.rb:63 # Market instance methods finds the vendors
+rspec ./spec/lib/product_spec.rb:26 # Product class methods responds to 'by_market'
+rspec ./spec/lib/product_spec.rb:30 # Product class methods find the first product by market 1
+rspec ./spec/lib/product_spec.rb:39 # Product attributes has the id 10
+rspec ./spec/lib/product_spec.rb:47 # Product attributes has the market_id 3
+rspec ./spec/lib/product_spec.rb:59 # Product associations market_id matches the markets id
+rspec ./spec/lib/sale_spec.rb:17 # Sale class methods 'all' should return
+rspec ./spec/lib/sale_spec.rb:30 # Sale attributes has the id 1
+rspec ./spec/lib/sale_spec.rb:34 # Sale attributes has the amount in cents 9290
+rspec ./spec/lib/sale_spec.rb:38 # Sale attributes has the day 31
+rspec ./spec/lib/sale_spec.rb:42 # Sale attributes has the vendor_id 1
+rspec ./spec/lib/sale_spec.rb:46 # Sale attributes has the product_id 1
+rspec ./spec/lib/sale_spec.rb:58 # Sale instance methods has the vendor
+rspec ./spec/lib/sale_spec.rb:64 # Sale instance methods has the product
+rspec ./spec/lib/vendor_spec.rb:26 # Vendor class methods responds to 'by_market'
+rspec ./spec/lib/vendor_spec.rb:30 # Vendor class methods find the first vendor by market 1
+rspec ./spec/lib/vendor_spec.rb:39 # Vendor attributes has the id 10
+rspec ./spec/lib/vendor_spec.rb:45 # Vendor attributes has the no of employees 11
+rspec ./spec/lib/vendor_spec.rb:48 # Vendor attributes has the market_id 3
+rspec ./spec/lib/vendor_spec.rb:60 # Vendor associations market_id matches the markets id
+rspec ./spec/lib/vendor_spec.rb:68 # Vendor associations has 7 sales
