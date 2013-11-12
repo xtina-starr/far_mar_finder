@@ -8,5 +8,8 @@ require_relative 'vendor'
 # ... Require all of the supporting classes
 
 class FarMarFinder
+  def method_name
+    
+  end
   # Your code goes here
 end
