@@ -22,4 +22,9 @@ class Sale
     end
   end
 
+  def self.find_by_amount_cents(amount)
+    CSV.read("../support/sales.csv").find do |array|
+      array[1].to_i == amount
+    end
+  end
 end

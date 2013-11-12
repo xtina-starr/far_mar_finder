@@ -20,5 +20,10 @@ class Vendor
     end
   end
     
+  def self.find_by_number_employees(employees)
+    CSV.read("../support/vendors.csv").find do |array|
+      array[2].to_i == employees
+    end
+  end
 
 end

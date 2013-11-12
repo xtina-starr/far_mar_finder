@@ -20,4 +20,10 @@ class Product
     end
   end
 
+  def self.find_by_vendor_id(vendor_id)
+    CSV.read("../support/products.csv").find do |array|
+      array[2].to_i == vendor_id
+    end
+  end
+
 end
