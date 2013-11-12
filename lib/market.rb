@@ -42,5 +42,9 @@ class Market
     end
   end
 
+  def vendors
+    
+  end
+
 
 end
