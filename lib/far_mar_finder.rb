@@ -23,7 +23,5 @@ class FarMarFinder
   def sales
     Sale
   end
-
-  # Your code goes here
 end
 

@@ -19,7 +19,7 @@ class Market
   end
 
   def id
-    @market_id
+    market_id.to_i
   end
 
   def self.find(market_id)

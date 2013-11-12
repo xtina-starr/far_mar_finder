@@ -3,11 +3,23 @@ class Sale
 
   def initialize(array)
     @sale_id = array[0]
-    @amount_cents = array[1]
-    @purchase_time = array[2]
-    @vendor_id = array[3]
-    @product_id = array[4]
+    @amount_cents = array[1].to_i
+    @purchase_time = Time.parse(array[2])
+    @vendor_id = array[3].to_i
+    @product_id = array[4].to_i
   end
+
+  #these definitions are to make rspec work
+  def id
+    sale_id.to_i
+  end
+
+
+  def amount
+    amount_cents
+  end
+  #end definitions for rspec
+
 
   def self.all
     CSV.read("./support/sales.csv").map do |array|
