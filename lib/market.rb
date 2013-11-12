@@ -26,8 +26,15 @@ class Market
 
   def self.find_by_name(name)
     CSV.read("../support/markets.csv").find do |array|
-      array[1].downcase == name.downcase
+      array[1].downcase.include? name.downcase 
     end
   end
+
+  def self.find_all_by_name(name)
+    CSV.read("../support/markets.csv").find_all do |array|
+      array[1].downcase.include? name.downcase 
+    end
+  end
+
 
 end

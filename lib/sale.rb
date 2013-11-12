@@ -27,4 +27,10 @@ class Sale
       array[1].to_i == amount
     end
   end
+
+  def self.find_all_by_product(product_id)
+    CSV.read("../support/sales.csv").find_all do |array|
+      array[4].to_i == product_id
+    end
+  end
 end

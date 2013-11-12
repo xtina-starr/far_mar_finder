@@ -26,4 +26,10 @@ class Vendor
     end
   end
 
+  def self.find_all_by_name(name)
+    CSV.read("../support/vendors.csv").find_all do |array|
+      array[1].downcase.include? name.downcase
+    end
+  end
+
 end
