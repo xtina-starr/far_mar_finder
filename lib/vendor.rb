@@ -20,6 +20,13 @@ class Vendor
     end
   end
 
+  #Do not need a find_all method when searching for vendor_id, since each vendor_id is unique.
+  # def self.find_all_by_vendor(id)
+  #   all.find_all do |vendor|
+  #     vendor.vendor_id.to_i == id.to_i
+  #   end
+  # end
+
    def self.find_by_market(market_id)
     all.find_all do |vendor|
       vendor.market_id.to_i == market_id.to_i
@@ -55,8 +62,14 @@ class Vendor
   end
 
   def revenue
-    sum = sales[1].inject(:+)
-    puts sum
+    sum = 0
+    b = Sale.all.collect do |sales|
+      sales.amount_cents
+    end
+    b.each do |cents|
+      sum += cents.to_i
+    end
+    return sum
   end
 
 end

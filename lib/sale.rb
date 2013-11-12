@@ -44,5 +44,20 @@ class Sale
       sale.market_id.to_i == market_id.to_i
     end
   end
+
+  def self.between(beginning_time,end_time)
+    all.find_all do |sale|
+      (beginning_time..end_time).cover?Time.new(sale.purchase_time)
+    end
+  end
+
+  def vendor
+    Vendor.find(vendor_id)
+  end
+
+  def product
+    Product.find(product_id)
+  end
+
   
 end

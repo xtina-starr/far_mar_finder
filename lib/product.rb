@@ -32,4 +32,16 @@ class Product
     end
   end
 
+  def vendor
+    Vendor.find(vendor_id)
+  end
+
+  def sales
+    Sale.find_all_by_product(product_id)
+  end
+
+  def number_of_sales
+    sales.length
+  end
+
 end
