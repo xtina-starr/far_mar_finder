@@ -15,21 +15,34 @@ class Sale
     end
   end
 
-  def self.find(id)
-    CSV.read("./support/sales.csv").find do |array|
-      array[0].to_i == id
+  def self.find(sale_id)
+    all.find do |sale|
+      sale.sale_id.to_i == sale_id.to_i
     end
   end
 
   def self.find_by_amount_cents(amount)
-    CSV.read("./support/sales.csv").find do |array|
-      array[1].to_i == amount
+    all.find do |sale|
+      sale.amount_cents.to_i == amount.to_i
     end
   end
 
-  def self.find_all_by_product(id)
-    CSV.read("./support/sales.csv").find_all do |array|
-      array[4].to_i == product_id
+  def self.find_all_by_product(product_id)
+    all.find_all do |sale|
+      sale.product_id.to_i == product_id.to_i
     end
   end
+
+  def self.find_by_vendor_id(vendor_id)
+    all.find_all do |sale|
+      sale.vendor_id.to_i == vendor_id.to_i
+    end
+  end
+
+  def self.find_by_market_id(market_id)
+    all.find_all do |sale|
+      sale.market_id.to_i == market_id.to_i
+    end
+  end
+  
 end

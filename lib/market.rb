@@ -28,6 +28,12 @@ class Market
     end
   end
 
+  def self.find_by_market_id(market_id)
+    all.find_all do |market|
+      market.market_id.to_i == market_id.to_i
+    end
+  end
+
   def self.find_by_name(name)
     all.find do |market|
       market.name.downcase.include? name.downcase 

@@ -15,33 +15,48 @@ class Vendor
   end
 
   def self.find(id)
-    CSV.read("./support/vendors.csv").find do |array|
-      array[0].to_i == id
+    all.find do |vendor|
+      vendor.vendor_id.to_i == id.to_i
     end
   end
 
    def self.find_by_market(market_id)
-    CSV.read("./support/vendors.csv").find_all do |array|
-      array[3].to_i == market_id.to_i
+    all.find_all do |vendor|
+      vendor.market_id.to_i == market_id.to_i
     end
   end
     
   def self.find_by_number_employees(employees)
-    CSV.read("./support/vendors.csv").find do |array|
-      array[2].to_i == employees
+    all.find do |vendor|
+      vendor.number_of_employees.to_i == employees.to_i
     end
   end
 
   def self.find_all_by_name(name)
-    CSV.read("./support/vendors.csv").find_all do |array|
-      array[1].downcase.include? name.downcase
+    all.find_all do |vendor|
+      vendor.name.downcase.include? name.downcase
     end
   end
 
-  def market(market_id)
-    CSV.read("./support/markets.csv").find_all do |array|
-      array[0].to_i == market_id
-    end
+  def market
+    Market.find_by_market_id(market_id)
+  end
+
+  def products
+    Product.find_by_vendor_id(vendor_id)
+  end
+
+  def sales_by_vendor
+    Sale.find_by_vendor_id(vendor_id)
+  end
+
+  def sales
+    Sale.find_by_market_id(market_id)
+  end
+
+  def revenue
+    sum = sales[1].inject(:+)
+    puts sum
   end
 
 end

@@ -15,20 +15,20 @@ class Product
   end
 
   def self.find(product_id)
-    CSV.read("./support/products.csv").find do |array|
-      array[0].to_i == product_id
+    all.find do |products|
+      products.product_id.to_i == product_id.to_i
     end
   end
 
   def self.find_by_vendor_id(vendor_id)
-    CSV.read("./support/products.csv").find do |array|
-      array[2].to_i == vendor_id
+    all.find_all do |products|
+      products.vendor_id.to_i == vendor_id.to_i
     end
   end
 
     def self.find_all_by_name(name)
-    CSV.read("./support/products.csv").find_all do |array|
-      array[1].downcase.include? name.downcase
+    all.find_all do |products|
+      products.name.downcase.include? name.downcase
     end
   end
 
