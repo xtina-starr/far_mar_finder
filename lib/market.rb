@@ -36,5 +36,11 @@ class Market
     end
   end
 
+    def self.find_all_by_state(state)
+    CSV.read("../support/markets.csv").find_all do |array|
+      array[-2].downcase.include? state.downcase 
+    end
+  end
+
 
 end
