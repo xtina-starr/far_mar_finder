@@ -10,3 +10,4 @@ require_relative 'vendor'
 class FarMarFinder
   # Your code goes here
 end
+

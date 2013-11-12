@@ -1,8 +1,8 @@
 class Market
-  attr_accessor :id, :name, :address, :city, :county, :state, :zip
+  attr_accessor :market_id, :name, :address, :city, :county, :state, :zip
 
-  def initialize(id,name,address,city,county,state,zip)
-    @id = id
+  def initialize(market_id,name,address,city,county,state,zip)
+    @market_id = market_id
     @name = name
     @address = address
     @city = city
@@ -11,11 +11,16 @@ class Market
     @zip = zip
   end
 
-
   def self.all
   #maybe load in CSV data
   CSV.read("../support/markets.csv").each do |array|
     Market.new(*array)
+    end
+  end
+
+  def self.find(market_id)
+    CSV.read("../support/markets.csv").find do |array|
+      array[0].to_i == market_id
     end
   end
 
