@@ -14,9 +14,15 @@ class Vendor
     end
   end
 
-  def self.find(vendor_id)
+  def self.find(id)
     CSV.read("./support/vendors.csv").find do |array|
-      array[0].to_i == vendor_id
+      array[0].to_i == id
+    end
+  end
+
+   def self.find_by_market(market_id)
+    CSV.read("./support/vendors.csv").find_all do |array|
+      array[3].to_i == market_id.to_i
     end
   end
     
@@ -29,6 +35,12 @@ class Vendor
   def self.find_all_by_name(name)
     CSV.read("./support/vendors.csv").find_all do |array|
       array[1].downcase.include? name.downcase
+    end
+  end
+
+  def market(market_id)
+    CSV.read("./support/markets.csv").find_all do |array|
+      array[0].to_i == market_id
     end
   end
 

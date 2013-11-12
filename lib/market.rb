@@ -18,34 +18,36 @@ class Market
     end
   end
 
-  def self.find(id)
-    all.find do |array|
-      array[0].to_i == id
+  def id
+    @market_id
+  end
+
+  def self.find(market_id)
+    all.find do |market|
+      market.market_id.to_i == market_id.to_i
     end
   end
 
   def self.find_by_name(name)
-    CSV.read("./support/markets.csv").find do |array|
-      array[1].downcase.include? name.downcase 
+    all.find do |market|
+      market.name.downcase.include? name.downcase 
     end
   end
 
   def self.find_all_by_name(name)
-    CSV.read("./support/markets.csv").find_all do |array|
-      array[1].downcase.include? name.downcase 
+    all.find_all do |market|
+      market.name.downcase.include? name.downcase 
     end
   end
 
     def self.find_all_by_state(state)
-    CSV.read("./support/markets.csv").find_all do |array|
-      array[-2].downcase.include? state.downcase 
+    all.find_all do |market|
+      market.state.downcase.include? state.downcase 
     end
   end
 
-  def vendors(market_id)
-    CSV.read("./support/vendors.csv").find_all do |array|
-      array[3].to_i == market_id
-    end
-  end
+   def vendors
+    Vendor.find_by_market(market_id)
+   end
 
 end
