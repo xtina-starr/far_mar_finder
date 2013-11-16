@@ -1,38 +1,46 @@
 class Product
-  attr_accessor :product_id, :name, :vendor_id
+
+  attr_accessor :id, :name, :vendor_id
 
   def initialize(array)
-    @product_id = array[0].to_i
-    @name = array[1]
-    @vendor_id = array[2].to_i
-  end
-
-  def id
-    product_id.to_i
+    @id         = array[0].to_i
+    @name       = array[1]
+    @vendor_id  = array[2].to_i
   end
 
   def self.all
-    CSV.read("./support/products.csv").map do |array|
-      # puts array.inspect
+    @product_data ||= CSV.read("./support/products.csv").map do |array|
       Product.new(array)
-      end
+    end
   end
 
   def self.find(product_id)
-    all.find do |products|
-      products.product_id.to_i == product_id.to_i
+    all.find do |product|
+      product.id.to_i == product_id.to_i
+    end
+  end
+
+  def self.find(vendor_id)
+    all.find do |product|
+      product.id.to_i == vendor_id.to_i
     end
   end
 
   def self.by_vendor(vendor_id)
-    all.find_all do |products|
-      products.vendor_id.to_i == vendor_id.to_i
+    all.find_all do |product|
+      product.vendor_id.to_i == vendor_id.to_i
     end
   end
 
-    def self.find_all_by_name(name)
-    all.find_all do |products|
-      products.name.downcase.include? name.downcase
+  def self.find_by_name(name)
+    all.find do |product|
+      product.name.downcase.include? name.downcase
+    end
+  end
+
+  def self.find_all_by_name(name)
+    all.find_all do |product|
+      product.name.downcase.include? name.downcase
     end
   end
 
@@ -41,11 +49,11 @@ class Product
   end
 
   def sales
-    Sale.find_all_by_product(product_id)
+    Sale.find_all_by_product_id(id)
   end
 
   def number_of_sales
-    sales.length
+    Sale.find_all_by_product_id(id).count
   end
 
 end
